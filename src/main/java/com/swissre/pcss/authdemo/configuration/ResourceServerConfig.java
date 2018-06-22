@@ -3,7 +3,6 @@ package com.swissre.pcss.authdemo.configuration;
 import com.swissre.pcss.authdemo.ApplicationProperties;
 import com.swissre.pcss.authdemo.security.PingFederateAccessTokenConverter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
