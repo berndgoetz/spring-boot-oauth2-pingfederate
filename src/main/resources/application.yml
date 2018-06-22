@@ -16,11 +16,15 @@ management:
 security:
   oauth2:
     client:
-      clientId: nac
-      userAuthorizationUri: https://int-idp-dev.swissre.com:9031/as/authorization.oauth2
-      accessTokenUri: https://int-idp-dev.swissre.com:9031/as/token.oauth2
+      client-id: youroktaclientid
+      client-secret: youroktaclientsecret
+      access-token-uri: https://youroktadomain.oktapreview.com/oauth2/default/v1/token
+      user-authorization-uri: https://youroktadomain.oktapreview.com/oauth2/default/v1/authorize
+      scope: openid profile email
     resource:
-      user-info-uri: https://int-idp-dev.swissre.com:9031/idp/userinfo.openid
+      user-info-uri: https://youroktadomain.oktapreview.com/oauth2/default/v1/userinfo
+      token-info-uri: https://youroktadomain.oktapreview.com/oauth2/default/v1/introspect
+      prefer-token-info: false
 
 logging:
   level:
@@ -35,18 +39,3 @@ logging:
 
 app:
   pingFederateKeyUrl: https://int-idp-dev.swissre.com:9031/ext/oauth/x509/kid
-
----
-
-spring:
-  profile: default
-server:
-  # enable https only when using a local server
-#  port: 8443
-#  ssl.key-store: classpath:sample.jks
-#  ssl.key-store-password: secret
-#  ssl.key-password: password
-#  ssl:
-#    enabled: true
-app:
-  enable-ssl: false

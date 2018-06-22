@@ -21,8 +21,6 @@ import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotEmpty;
-
 /**
  * Application level properties handling. Best practice in Spring applications.
  */
@@ -32,7 +30,6 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 public class ApplicationProperties {
 
-    @NotEmpty
-    private String pingFederateKeyUrl;
+    private String enableSsl;
 
 }
