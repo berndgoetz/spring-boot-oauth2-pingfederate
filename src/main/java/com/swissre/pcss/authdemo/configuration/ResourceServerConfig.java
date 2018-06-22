@@ -24,30 +24,35 @@ import org.springframework.web.context.request.RequestContextListener;
 @EnableOAuth2Sso
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
-//    @Autowired
-//    ApplicationProperties appProps;
-//
-//    @Override
-//    public void configure(ResourceServerSecurityConfigurer config) {
-//        config.tokenServices(tokenServices());
-//    }
-//
-//    @Bean
-//    @Primary
-//    public DefaultTokenServices tokenServices() {
-//        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-//        defaultTokenServices.setTokenStore(tokenStore());
-//        return defaultTokenServices;
-//    }
-//
-//    @Bean
-//    public TokenStore tokenStore() {
-//        return new JwtTokenStore(pingFederateAccessTokenConverter());
-//    }
-//
-//    public PingFederateAccessTokenConverter pingFederateAccessTokenConverter() {
-//        return new PingFederateAccessTokenConverter(appProps.getPingFederateKeyUrl());
-//    }
+    // comment out from here to...
+
+    @Autowired
+    ApplicationProperties appProps;
+
+    @Override
+    public void configure(ResourceServerSecurityConfigurer config) {
+        config.tokenServices(tokenServices());
+    }
+
+    @Bean
+    @Primary
+    public DefaultTokenServices tokenServices() {
+        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+        defaultTokenServices.setTokenStore(tokenStore());
+        return defaultTokenServices;
+    }
+
+    @Bean
+    public TokenStore tokenStore() {
+        return new JwtTokenStore(pingFederateAccessTokenConverter());
+    }
+
+    public PingFederateAccessTokenConverter pingFederateAccessTokenConverter() {
+        return new PingFederateAccessTokenConverter(appProps.getPingFederateKeyUrl());
+    }
+
+    // ... here to show what's going wrong with PingFederate's userinfo.openid endpoint
+    // you should receive a 401. If not, let me know what you did better.
 
     @Bean
     public RequestContextListener requestContextListener() {
