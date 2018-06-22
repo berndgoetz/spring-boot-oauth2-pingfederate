@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/fragments/layout :: htmlhead" th:with="title='Entry'"></head>
+<body role="document">
+<div th:replace="/fragments/layout :: navbar">(navbar)</div>
+<div class="container">
+    <p></p>
+    <p>Welcome to the P&amp;C Spring Boot Service Sample Application.</p>
+    <ul style="list-style-type:disc">
+        <li><a th:href="@{/swagger-ui.html}">REST API</a></li>
+        <li><a th:href="@{/actuator}">Actuator</a></li>
+        <li><a th:href="@{/actuator/info}">Application info</a></li>
+        <li><a th:href="@{/actuator/health}">Application health</a></li>
+        <li><a th:href="@{/me}">About me</a></li>
+        <li><a th:href="@{/myroles}">My roles</a></li>
+        <li><a th:href="@{/headers}">Headers</a></li>
+        <li>Go to the <a th:href="@{/protected}">Protected Area</a></li>
+    </ul>
+    <p>
+    <p>User info: id: <span th:text="${user}">anonymous</span>, name: <span th:text="${firstName}">first name</span>
+        <span th:text="${lastName}">last name</span>, email: <span th:text="${email}">email</span>
+    </p>
+    <p>Principal object: (<span th:text="${principal}">principal</span>)</p>
+    </p>
+</div>
+</body>
+</html>

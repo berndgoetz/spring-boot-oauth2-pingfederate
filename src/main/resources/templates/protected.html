@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/fragments/layout :: htmlhead" th:with="title='Protected area'"></head>
+<body role="document">
+<div th:replace="/fragments/layout :: navbar">(navbar)</div>
+<div class="container">
+    <p></p>
+    <p>This part of the application is <strong>protected</strong> by OIDC.</p>
+    <p><a th:href="@{/}">Home</a> - <a th:href="@{/logout}">Log out</a></p>
+    <p>User info: id: <span th:text="${user}">anonymous</span>, name: <span th:text="${firstName}">first name</span>
+        <span th:text="${lastName}">last name</span>, email: <span th:text="${email}">email</span>
+    </p>
+    <p>Principal object: (<span th:text="${principal}">principal</span>)</p>
+</div>
+</body>
+</html>

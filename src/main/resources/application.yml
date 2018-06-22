@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: pcss-authdemo
+server:
+  port: ${port:8080}
+  servlet:
+    context-path: /authdemo
+  # enables reverse proxy with x-forwarded-* headers
+#  use-forward-headers: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+security:
+  oauth2:
+    client:
+      clientId: nac
+      userAuthorizationUri: https://int-idp-dev.swissre.com:9031/as/authorization.oauth2
+      accessTokenUri: https://int-idp-dev.swissre.com:9031/as/token.oauth2
+    resource:
+      user-info-uri: https://int-idp-dev.swissre.com:9031/idp/userinfo.openid
+
+logging:
+  level:
+    com.swissre.pcss.web: info  # set to debug if you want to see headers and body content
+    org.hibernate: # set to trace to log sql statements and bindings
+      type.descriptor.sql: info
+      SQL: info
+    org.springframework: info
+    org.springframework.security: debug
+    org.springframework.boot.autoconfigure.security: info
+    org.springframework.web.client: debug
+
+app:
+  pingFederateKeyUrl: https://int-idp-dev.swissre.com:9031/ext/oauth/x509/kid
+
+---
+
+spring:
+  profile: default
+server:
+  # enable https only when using a local server
+#  port: 8443
+#  ssl.key-store: classpath:sample.jks
+#  ssl.key-store-password: secret
+#  ssl.key-password: password
+#  ssl:
+#    enabled: true
+app:
+  enable-ssl: false
